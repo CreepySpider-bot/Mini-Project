@@ -12,6 +12,7 @@ imgSize = 300
 
 folder = "Data/B"
 counter = 0
+flag = False
 
 while(True):
     success,img = cap.read()
@@ -44,9 +45,13 @@ while(True):
             
     cv2.imshow("Image",img)
     key = cv2.waitKey(1)
-    if key==ord('s'):
+    if key==ord('s') or flag==True:
         counter+=1
+        flag = True
         cv2.imwrite(f'{folder}/Image_{time.time()}.jpg',imgWhite)
         print(counter)
+        if(counter==150):
+            flag = False
+        # time.sleep(1)
     # for github by varun
     
